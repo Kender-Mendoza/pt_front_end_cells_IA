@@ -2,7 +2,5 @@
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  this is the modal
 </template>
