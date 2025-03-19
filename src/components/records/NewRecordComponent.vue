@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
+import { useI18n } from "vue-i18n";
 import { recordSchema } from '@/validations/RecordSchema';
 import InputTextComponent from '../shared/InputTextComponent.vue';
 import InputPasswordComponent from '../shared/InputPasswordComponent.vue';
 import InputDateComponent from '../shared/InputDateComponent.vue';
 import SelectComponent from '../shared/SelectComponent.vue';
 import InputEmailComponent from '../shared/InputEmailComponent.vue';
+import SwitchComponent from '../shared/SwitchComponent.vue';
 
+const { t } = useI18n();
 const { handleSubmit } = useForm({
-  validationSchema: recordSchema,
+  validationSchema: recordSchema(t),
 });
-
 const submitForm = handleSubmit((values) => {
   console.log('Datos validos', values)
 })
-
 </script>
 
 <template>
@@ -64,7 +65,7 @@ const submitForm = handleSubmit((values) => {
           <SelectComponent
             name="intereses"
             label="Intereses"
-            :values="['Programar', 'jugar futbol']"
+            :values="['Leer', 'Escribir', 'Programar']"
           />
         </v-col>
       </v-row>
@@ -73,7 +74,10 @@ const submitForm = handleSubmit((values) => {
 
       <v-row>
         <v-col cols="12" md="12">
-          <v-switch label="Desea recibir información" color="primary" inset/>
+          <SwitchComponent
+            label="Desea recibir información"
+            name="recibe_info"
+          />
         </v-col>
       </v-row>
 
@@ -85,6 +89,7 @@ const submitForm = handleSubmit((values) => {
           />
         </v-col>
       </v-row>
+
       <v-card-actions>
         <v-btn
           type="submit"

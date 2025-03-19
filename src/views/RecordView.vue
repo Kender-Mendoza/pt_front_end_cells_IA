@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import NewRecordComponent from '@/components/records/NewRecordComponent.vue';
 import ButtonComponent from '@/components/shared/ButtonComponent.vue'
+import NotificationComponent from '@/components/shared/NotificationComponent.vue';
 import WrapperModal from '@/components/shared/WrapperModal.vue';
 import { ref } from 'vue';
 
-const showModal = ref<boolean>(true)
+const showModal = ref<boolean>(false)
 const childForm = ref(null)
 
 const tonggleModal = () => {
@@ -20,6 +21,8 @@ const submitForm = () => {
 </script>
 
 <template>
+  <NotificationComponent content="Hola como estas?" />
+
   <div class="pa-4 text-center">
     <ButtonComponent
       content="Crear Registro"

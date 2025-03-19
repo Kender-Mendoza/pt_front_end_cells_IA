@@ -1,0 +1,10 @@
+{
+  "record_schema": {
+    "required": "Este campo es obligatorio",
+    "email": "Debe ser un correo válido",
+    "max": "Debe tener como máximo {max} caracteres",
+    "oneOf": "Las contraseñas deben coincidir",
+    "minSelect": "Selecciona al menos {min} opción(es)",
+    "dateInvalid": "Formato de fecha no válido"
+  }
+}

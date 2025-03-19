@@ -10,24 +10,18 @@ defineProps({
   label: {
     type: String,
     default: ''
-  },
-  values: {
-    type: Array,
-    default: () => []
   }
 })
 
 </script>
 
 <template>
-  <Field :name="name" v-slot="{ field, errorMessage }">
-    <v-select
+  <Field :name="name" v-slot="{ field }">
+    <v-switch
       v-bind="field"
-      :error-messages="errorMessage"
-      :items="values"
       :label="label"
-      chips
-      multiple
-    ></v-select>
+      color="primary"
+      inset
+    />
   </Field>
 </template>
