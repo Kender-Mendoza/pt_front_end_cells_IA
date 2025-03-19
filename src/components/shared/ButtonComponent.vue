@@ -1,7 +1,21 @@
 <script setup lang="ts">
+
+defineProps({
+  content: {
+    type: String,
+    require: true
+  }
+})
+
+const emit = defineEmits<{
+  (event: 'onClickButton'): void
+}>();
+
+const onClick = () => {
+  emit('onClickButton')
+}
 </script>
 
 <template>
-  <!-- loading -->
-  <v-btn color="primary" elevation="4" large > Nuevo registro </v-btn>
+  <v-btn color="primary" elevation="4" large @click="onClick" > {{ content }} </v-btn>
 </template>

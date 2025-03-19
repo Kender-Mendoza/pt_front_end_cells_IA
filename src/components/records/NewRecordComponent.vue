@@ -1,122 +1,101 @@
 <script setup lang="ts">
-import { ref, shallowRef } from 'vue';
-import TextInputComponent from '../shared/TextInputComponent.vue';
+import { useForm } from 'vee-validate'
+import { recordSchema } from '@/validations/RecordSchema';
+import InputTextComponent from '../shared/InputTextComponent.vue';
+import InputPasswordComponent from '../shared/InputPasswordComponent.vue';
+import InputDateComponent from '../shared/InputDateComponent.vue';
+import SelectComponent from '../shared/SelectComponent.vue';
+import InputEmailComponent from '../shared/InputEmailComponent.vue';
 
-const valid = ref(false)
-const password = ref<string>('')
-const repeatPassword = ref<string>('')
-const selected = ref<string[]>([])
-const email = ref<string>('')
-const model = shallowRef(null)
+const { handleSubmit } = useForm({
+  validationSchema: recordSchema,
+});
 
-const onSubmit = () => {
-  // primero verificar si los datos
-}
+const submitForm = handleSubmit((values) => {
+  console.log('Datos validos', values)
+})
 
 </script>
 
 <template>
-  <h2> Nuevo registro </h2>
-  <v-form v-model="valid" ref="form" @submit.prevent="onSubmit">
-    <v-container>
+  <form @submit="submitForm" >
+    <v-container class="pa-0">
       <v-row>
         <v-col cols="12" md="6">
-          <TextInputComponent
-            :label="'Nombre'"
-            :model="'name'"
-            :rules="[
-              (value: string) => !!value || 'Campo obligatorio',
-              (value: string) => (value && value.length >= 3) || 'Min 3 characters'
-            ]
-          "/>
+          <InputTextComponent
+            name="name"
+            label="Nombre *"
+          />
         </v-col>
 
-        <v-col cols="12" md="6" >
-          <TextInputComponent
-            :label="'Apellidos'"
-            :model="'lastName'"
-            :rules="[
-              (value: string) => !!value || 'Campo obligatorio',
-              (value: string) => (value && value.length >= 3) || 'Min 3 characters'
-            ]
-          "/>
+        <v-col cols="12" md="6">
+          <InputTextComponent
+            name="last_name"
+            label="Segundo Nombre *"
+          />
         </v-col>
       </v-row>
 
       <v-row>
         <v-col cols="12" md="6">
-          <v-text-field
-            type="password"
-            v-model="password"
-            :label="'Password'"
-            :rules="[
-              (value: string) => !!value || 'Campo obligatorio',
-            ]"
-            hide-details="auto"
-          ></v-text-field>
+          <InputPasswordComponent
+            name="password"
+            label="Contraseña *"
+          />
         </v-col>
 
-        <v-col cols="12" md="6" >
-          <v-text-field
-            type="password"
-            v-model="repeatPassword"
-            :label="'Confirmar Contraseña'"
-            :rules="[
-              (value: string) => !!value || 'Campo obligatorio',
-            ]"
-            hide-details="auto"
-          ></v-text-field>
+        <v-col cols="12" md="6">
+          <InputPasswordComponent
+            name="comfirm_password"
+            label="Confirmar Contraseña *"
+          />
         </v-col>
       </v-row>
 
       <v-row>
         <v-col cols="12" md="6">
-          <v-date-input
-            prepend-icon=""
-            prepend-inner-icon="$calendar"
-            label="Date input">
-          </v-date-input>
+          <InputDateComponent
+            name="birth_date"
+            label="Fecha de Cumpleaños *"
+          />
         </v-col>
 
-        <v-col cols="12" md="6" >
-          <v-autocomplete
-            v-model="selected"
-            :items="['Trevor Handsen', 'Alex Nelson']"
-            chips
-            label="To"
-            full-width
-            hide-details
-            hide-no-data
-            hide-selected
-            multiple
-            single-line
-          ></v-autocomplete>
+        <v-col cols="12" md="6">
+          <SelectComponent
+            name="intereses"
+            label="Intereses"
+            :values="['Programar', 'jugar futbol']"
+          />
+        </v-col>
+      </v-row>
+
+      <v-divider class="my-2"></v-divider>
+
+      <v-row>
+        <v-col cols="12" md="12">
+          <v-switch label="Desea recibir información" color="primary" inset/>
         </v-col>
       </v-row>
 
       <v-row>
         <v-col cols="12" md="12">
-          <v-switch label="Desea recibir información" color="primary" inset></v-switch>
+          <InputEmailComponent
+            name="email"
+            label="E-mail"
+          />
         </v-col>
       </v-row>
-
-      <v-row>
-        <v-col cols="12" md="12">
-          <v-text-field
-            type="email"
-            v-model="password"
-            :label="'Email'"
-            :rules="[
-              (value: string) => !!value || 'Campo obligatorio',
-            ]"
-            hide-details="auto"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-
-      <v-btn type='submit' color="primary" elevation="4" large > Crear </v-btn>
-
+      <v-card-actions>
+        <v-btn
+          type="submit"
+          color="primary"
+          block
+          size="large"
+          :loading="false"
+        >
+          Enviar
+        </v-btn>
+      </v-card-actions>
     </v-container>
-  </v-form>
-
+  </form>
 </template>
