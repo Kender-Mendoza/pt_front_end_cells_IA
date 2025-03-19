@@ -2,7 +2,7 @@
 import NewRecordComponent from '@/components/records/NewRecordComponent.vue';
 import ButtonComponent from '@/components/shared/ButtonComponent.vue'
 import NotificationComponent from '@/components/shared/NotificationComponent.vue';
-import WrapperModal from '@/components/shared/WrapperModal.vue';
+import WrapperModalLayout from '@/layouts/WrapperModalLayout.vue';
 import { ref } from 'vue';
 
 const showModal = ref<boolean>(false)
@@ -29,14 +29,14 @@ const submitForm = () => {
       @on-click-button="tonggleModal"
     />
 
-    <WrapperModal
+    <WrapperModalLayout
       title="Nuevo Registro"
       button-text="Crear"
       v-model="showModal"
       @button-event="submitForm"
     >
       <NewRecordComponent ref="childForm"/>
-    </WrapperModal>
+    </WrapperModalLayout>
   </div>
 
   <RouterView/>

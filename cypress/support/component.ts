@@ -20,9 +20,13 @@ import './commands'
 // require('./commands')
 
 // Import global styles
-import '@/assets/main.css'
-
 import { mount } from 'cypress/vue'
+
+import { createVuetify } from 'vuetify'
+import 'vuetify/styles'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { VDateInput } from 'vuetify/labs/VDateInput'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -37,7 +41,22 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  const vuetify = createVuetify({
+    components: {
+      ...components,
+      VDateInput
+    },
+    directives,
+  })
+
+  return mount(component, {
+    global: {
+      plugins: [vuetify],
+    },
+    ...options,
+  })
+})
 
 // Example use:
 // cy.mount(MyComponent)

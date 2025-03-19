@@ -2,12 +2,13 @@
 import { useForm } from 'vee-validate'
 import { useI18n } from "vue-i18n";
 import { recordSchema } from '@/validations/RecordSchema';
-import InputTextComponent from '../shared/InputTextComponent.vue';
-import InputPasswordComponent from '../shared/InputPasswordComponent.vue';
-import InputDateComponent from '../shared/InputDateComponent.vue';
-import SelectComponent from '../shared/SelectComponent.vue';
-import InputEmailComponent from '../shared/InputEmailComponent.vue';
-import SwitchComponent from '../shared/SwitchComponent.vue';
+
+import InputTextComponent from '@/components/shared/InputTextComponent.vue';
+import InputPasswordComponent from '@/components/shared/InputPasswordComponent.vue';
+import InputDateComponent from '@/components/shared/InputDateComponent.vue';
+import SelectComponent from '@/components/shared/SelectComponent.vue';
+import InputEmailComponent from '@/components/shared/InputEmailComponent.vue';
+import SwitchComponent from '@/components/shared/SwitchComponent.vue';
 
 const { t } = useI18n();
 const { handleSubmit } = useForm({
