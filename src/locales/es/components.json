@@ -7,7 +7,7 @@
       "confirm_password": "Confirmar Contraseña *",
       "birth_date": "Fecha de Nacimiento *",
       "interests": "Intereses",
-      "recibe_info": "Desea recibir información",
+      "receive_info": "Desea recibir información",
       "email": "E-mail",
       "required_fields": "* Indica los campos requridos. ",
       "cancel": "Cancelar",

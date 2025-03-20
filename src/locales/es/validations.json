@@ -3,8 +3,8 @@
     "required": "Este campo es obligatorio",
     "email": "Debe ser un correo válido",
     "max": "Debe tener como máximo {max} caracteres",
-    "oneOf": "Las contraseñas deben coincidir",
-    "minSelect": "Selecciona al menos {min} opción(es)",
-    "dateInvalid": "Formato de fecha no válido"
+    "one_of": "Las contraseñas deben coincidir",
+    "min_select": "Selecciona al menos {min} opción(es)",
+    "date_invalid": "Formato de fecha no válido"
   }
 }

@@ -16,7 +16,7 @@ const { t } = useI18n();
 
 const { handleSubmit } = useForm({
   validationSchema: recordSchema(t),
-  initialValues: { recibe_info: true }
+  initialValues: { receive_info: true }
 });
 
 const emits = defineEmits<{
@@ -97,8 +97,8 @@ const onClickSwitch = (value: boolean) => {
       <v-row>
         <v-col cols="12" md="6">
           <SwitchComponent
-            name="recibe_info"
-            :label="t('components.records.new_record_component.recibe_info')"
+            name="receive_info"
+            :label="t('components.records.new_record_component.receive_info')"
             @checked="onClickSwitch"
           />
         </v-col>

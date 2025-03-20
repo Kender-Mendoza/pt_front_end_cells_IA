@@ -13,22 +13,22 @@ export const recordSchema = (t: TFunction) => {
       .required(t("validations.record_schema.required")),
 
     comfirm_password: yup.string()
-      .oneOf([yup.ref("password")], t("validations.record_schema.oneOf"))
+      .oneOf([yup.ref("password")], t("validations.record_schema.one_of"))
       .required(t("validations.record_schema.required")),
 
     birth_date: yup.date()
-      .typeError(t("validations.record_schema.dateInvalid"))
+      .typeError(t("validations.record_schema.date_invalid"))
       .required(t("validations.record_schema.required")),
 
     interests: yup.array()
       .of(yup.string().oneOf(["Leer", "Escribir", "Programar"]))
-      .min(1, t("validations.record_schema.minSelect", { min: 1 })),
+      .min(1, t("validations.record_schema.min_select", { min: 1 })),
 
-    recibe_info: yup.boolean().default(true),
+    receive_info: yup.boolean().default(true),
 
     email: yup.string()
       .email(t("validations.record_schema.email"))
-      .when("recibe_info", {
+      .when("receive_info", {
         is: true,
         then: (schema) => schema.required(t("validations.record_schema.required")),
         otherwise: (schema) => schema.notRequired(),

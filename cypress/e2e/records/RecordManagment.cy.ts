@@ -26,7 +26,7 @@ describe('Record Managment', () => {
       cy.get('input[name="comfirm_password"]').should('exist')
       cy.get('.v-label').should('contain', 'Confirmar Contraseña *')
 
-      cy.get('input[name="birth_date"]').should('exist')
+      cy.get('input[placeholder="mm/dd/yyyy"]').should('exist')
       cy.get('.v-label').should('contain', 'Fecha de Nacimiento *')
 
       cy.get('input[name="intereses"]').should('exist')
@@ -64,12 +64,12 @@ describe('Record Managment', () => {
         .next()
         .contains('Este campo es obligatorio')
 
-      cy.get('input[name="comfirm_password"]')
+      cy.get('input[placeholder="mm/dd/yyyy"]')
         .closest('.v-input__control')
         .next()
         .contains('Este campo es obligatorio')
 
-      cy.get('input[name="birth_date"]')
+      cy.get('input[placeholder="mm/dd/yyyy"]')
         .closest('.v-input__control')
         .next()
         .contains('Este campo es obligatorio')
@@ -113,7 +113,7 @@ describe('Record Managment', () => {
   })
 
   context("When switch is false", () => {
-    it("Should no see email input", () => {
+    it("Should not see email input", () => {
       cy.get('button').contains('Crear Registro').click()
 
       cy.get('input[aria-label="Desea recibir información"]').as('checkboxInput')
@@ -134,7 +134,7 @@ describe('Record Managment', () => {
       cy.get('button').contains('Crear Registro').click()
     });
 
-    it('Should see invalid date format error', () => {
+    it('Should see invalid email error', () => {
       cy.get('input[name="email"]').type("123")
 
       cy.get('input[name="email"]')
@@ -149,13 +149,13 @@ describe('Record Managment', () => {
       cy.get('button').contains('Crear Registro').click()
     });
 
-    it('Should allow to see the modal', () => {
+    it('Should allow to create record', () => {
       cy.get('input[name="name"]').type("Cristiano")
       cy.get('input[name="last_name"]').type('Ronaldo')
       cy.get('input[name="password"]').type('root1234')
       cy.get('input[name="comfirm_password"]').type('root1234')
 
-      cy.get('input[name="birth_date"]').click()
+      cy.get('input[placeholder="mm/dd/yyyy"]').click()
       cy.get('button').contains("10").click()
       cy.get('button span.v-btn__content').contains("OK").click()
 
