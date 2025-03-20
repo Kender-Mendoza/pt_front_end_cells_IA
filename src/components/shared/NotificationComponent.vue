@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    required: true,
+  },
   content: {
     type: String,
     required: true,
@@ -9,11 +13,18 @@ defineProps({
   },
 })
 
-const snackbar = ref<boolean>(true)
+const emits = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+}>()
+
+const showNotification = computed({
+  get: () => props.modelValue,
+  set: (value: boolean) => emits('update:modelValue', value),
+})
 </script>
 
 <template>
-  <v-snackbar v-model="snackbar" :timeout="2000" color="success">
+  <v-snackbar v-model="showNotification" :timeout="2000" color="success">
     <div class="text-center">{{ content }}</div>
   </v-snackbar>
 </template>

@@ -1,5 +1,6 @@
 import WrapperModalLayout from '../WrapperModalLayout.vue'
 
+
 describe('WrapperModalLayout', () => {
   it('renders the dialog with the correct title and button text', () => {
     cy.mount(WrapperModalLayout, {
@@ -20,7 +21,7 @@ describe('WrapperModalLayout', () => {
         title: 'Confirmation',
       },
       slots: {
-        default: 'Hello there!',
+        default: () => 'Hello there!',
       },
     })
 

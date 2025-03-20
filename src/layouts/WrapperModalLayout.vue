@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import NewRecordComponent from '@/components/records/NewRecordComponent.vue'
 
 const props = defineProps({
   modelValue: {
@@ -34,12 +35,11 @@ const closeModal = () => {
           <div class="text-h5 text-medium-emphasis ps-2">
             {{ title }}
           </div>
-
           <v-btn icon="$close" variant="text" @click="closeModal"></v-btn>
         </v-card-title>
 
         <div class="px-6">
-          <slot />
+          <NewRecordComponent @close-modal="closeModal" />
         </div>
       </v-card>
     </template>
