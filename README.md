@@ -1,61 +1,44 @@
-# pt_front_end_cells_IA
+# Prueba Técnica - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Este proyecto es el resultado de una prueba técnica de frontend, cuyo objetivo era desarrollar un formulario de creación de registros utilizando Vue 3.
 
-## Recommended IDE Setup
+El formulario permite la entrada de datos con validaciones y controles interactivos, incluyendo un interruptor que habilita o deshabilita el campo de correo electrónico.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tecnologías utilizadas
 
-## Type Support for `.vue` Imports in TS
+El desarrollo de esta prueba se ha realizado con las siguientes tecnologías:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- **Vue 3**: Framework principal para la construcción de la aplicación.
+- **Vite**: Herramienta de compilación rápida para el entorno de desarrollo.
+- **Vuetify**: Framework de componentes UI basado en Material Design.
+- **Vee-Validate**: Librería de validación de formularios.
+- **Yup**: Schema validation para definir las reglas del formulario.
+- **Vue Router**: Manejo de rutas en la aplicación.
+- **Vue I18n**: Internacionalización de la aplicación.
+- **Cypress**: Pruebas unitarias y de integración de los componentes.
 
-## Customize configuration
+## Instalación y ejecución
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
+Para instalar las dependencias del proyecto, ejecutar:
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
+Iniciar servidor en modo desarrollo:
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
+Pruebas de unidad con Cypress:
 ```sh
-npm run build
+npm run test:unit
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
+Pruebas de unidad con Cypress:
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
 npm run test:e2e
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Estructura del proyecto
 
-```sh
-npm run lint
-```
+El proyecto sigue una estructura modular con componentes reutilizables y validaciones centralizadas para mantener el código limpio y escalable.
