@@ -28,10 +28,10 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { VDateInput } from 'vuetify/labs/VDateInput'
 
-import { createI18n } from 'vue-i18n'
-import validationsEs from "@/locales/es/validations.json";
-import viewsEs from "@/locales/es/views.json"
-import componentsEs from "@/locales/es/components.json"
+// import { createI18n } from 'vue-i18n'
+// import validationsEs from "@/locales/es/validations.json";
+// import viewsEs from "@/locales/es/views.json"
+// import componentsEs from "@/locales/es/components.json"
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -55,18 +55,18 @@ Cypress.Commands.add('mount', (component, options = {}) => {
     directives,
   })
 
-  const i18n = createI18n(
-    {
-      locale: 'es',
-      messages: {
-        es: {
-          components: componentsEs,
-          validations: validationsEs,
-          views: viewsEs,
-        }
-      }
-    }
-  )
+  // const i18n = createI18n(
+  //   {
+  //     locale: 'es',
+  //     messages: {
+  //       es: {
+  //         components: componentsEs,
+  //         validations: validationsEs,
+  //         views: viewsEs,
+  //       }
+  //     }
+  //   }
+  // )
 
   return mount(component, {
     global: {

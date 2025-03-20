@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 defineProps({
   content: {
     type: String,
     require: true,
-    default: ''
-  }
+    default: '',
+  },
 })
 
 const snackbar = ref<boolean>(true)

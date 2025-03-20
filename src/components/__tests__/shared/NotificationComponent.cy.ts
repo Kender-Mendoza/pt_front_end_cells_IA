@@ -4,8 +4,8 @@ describe('NotificationComponent', () => {
   it('renders the snackbar with the correct content', () => {
     cy.mount(NotificationComponent, {
       props: {
-        content: 'Operation successful'
-      }
+        content: 'Operation successful',
+      },
     })
 
     cy.get('.v-snackbar').should('exist')

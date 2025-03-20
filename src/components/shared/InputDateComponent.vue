@@ -5,14 +5,13 @@ defineProps({
   name: {
     type: String,
     require: true,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
-
 </script>
 
 <template>

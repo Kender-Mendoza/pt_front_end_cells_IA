@@ -1,47 +1,46 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
-import { useI18n } from "vue-i18n";
-import { ref } from 'vue';
+import { useI18n } from 'vue-i18n'
+import { ref } from 'vue'
 
-import { recordSchema } from '@/validations/RecordSchema';
+import { recordSchema } from '@/validations/RecordSchema'
 
-import InputTextComponent from '@/components/shared/InputTextComponent.vue';
-import InputPasswordComponent from '@/components/shared/InputPasswordComponent.vue';
-import InputDateComponent from '@/components/shared/InputDateComponent.vue';
-import SelectComponent from '@/components/shared/SelectComponent.vue';
-import InputEmailComponent from '@/components/shared/InputEmailComponent.vue';
-import SwitchComponent from '@/components/shared/SwitchComponent.vue';
+import InputTextComponent from '@/components/shared/InputTextComponent.vue'
+import InputPasswordComponent from '@/components/shared/InputPasswordComponent.vue'
+import InputDateComponent from '@/components/shared/InputDateComponent.vue'
+import SelectComponent from '@/components/shared/SelectComponent.vue'
+import InputEmailComponent from '@/components/shared/InputEmailComponent.vue'
+import SwitchComponent from '@/components/shared/SwitchComponent.vue'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 const { handleSubmit } = useForm({
   validationSchema: recordSchema(t),
-  initialValues: { receive_info: true }
-});
+  initialValues: { receive_info: true },
+})
 
 const emits = defineEmits<{
-  (event: "closeModal", openModal: boolean, showNotification: boolean ): void;
-}>();
+  (event: 'closeModal', openModal: boolean, showNotification: boolean): void
+}>()
 
 const showEmailInput = ref<boolean>(true)
 
 const submitForm = handleSubmit((values) => {
   console.log('Datos validos', values)
-  emits("closeModal", false, true)
+  emits('closeModal', false, true)
 })
 
 const onCancelCreation = () => {
-  emits("closeModal", false, false)
+  emits('closeModal', false, false)
 }
 
 const onClickSwitch = (value: boolean) => {
   showEmailInput.value = value
 }
-
 </script>
 
 <template>
-  <form @submit="submitForm" >
+  <form @submit="submitForm">
     <v-container class="pa-0">
       <v-row>
         <v-col cols="12" md="6">
@@ -122,7 +121,7 @@ const onClickSwitch = (value: boolean) => {
       <div class="my-2 d-flex justify-end">
         <v-btn
           class="text-button"
-          :text="t('components.records.new_record_component.cancel') "
+          :text="t('components.records.new_record_component.cancel')"
           variant="text"
           @click="onCancelCreation"
         ></v-btn>

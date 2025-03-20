@@ -5,8 +5,8 @@ describe('SwitchComponent', () => {
     cy.mount(SwitchComponent, {
       props: {
         name: 'toggle',
-        label: 'Enable feature'
-      }
+        label: 'Enable feature',
+      },
     })
 
     cy.get('input[aria-label="Enable feature"]').should('exist')
@@ -17,8 +17,8 @@ describe('SwitchComponent', () => {
     cy.mount(SwitchComponent, {
       props: {
         name: 'toggle',
-        label: 'Enable feature'
-      }
+        label: 'Enable feature',
+      },
     })
 
     cy.get('input[aria-label="Enable feature"]').should('not.be.checked')
@@ -35,8 +35,8 @@ describe('SwitchComponent', () => {
       props: {
         name: 'toggle',
         label: 'Enable feature',
-        onChecked: cy.spy().as('tests')
-      }
+        onChecked: cy.spy().as('tests'),
+      },
     })
 
     cy.get('input[aria-label="Enable feature"]').click()

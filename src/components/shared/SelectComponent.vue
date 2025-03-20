@@ -5,18 +5,17 @@ defineProps({
   name: {
     type: String,
     require: true,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
+    default: '',
   },
   values: {
     type: Array,
-    default: () => []
-  }
+    default: () => [],
+  },
 })
-
 </script>
 
 <template>

@@ -5,19 +5,19 @@ defineProps({
   name: {
     type: String,
     require: true,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 const emit = defineEmits<{
-  (e: "checked", value: boolean): void
+  (e: 'checked', value: boolean): void
 }>()
 
 const onClick = (value: boolean) => {
-  emit("checked", !value)
+  emit('checked', !value)
 }
 </script>
 

@@ -35,8 +35,8 @@ describe.skip('NewRecordComponent', () => {
 
     cy.get('p.text-medium-emphasis.ps-2.text-caption').contains('* Indica los campos requridos.')
 
-    cy.get('button').contains("Cancelar")
-    cy.get('button').contains("Crear")
+    cy.get('button').contains('Cancelar')
+    cy.get('button').contains('Crear')
   })
 
   it('validates required fields and prevents submission on error', () => {
@@ -71,24 +71,22 @@ describe.skip('NewRecordComponent', () => {
   })
 
   it('fills the form and submits successfully', () => {
-    cy.mount(NewRecordComponent,
-      {
-        props: {
-          onCloseModal: cy.spy().as('closeModalSpy')
-        }
-      }
-    )
+    cy.mount(NewRecordComponent, {
+      props: {
+        onCloseModal: cy.spy().as('closeModalSpy'),
+      },
+    })
 
-    cy.get('input[name="name"]').type("Cristiano")
+    cy.get('input[name="name"]').type('Cristiano')
     cy.get('input[name="last_name"]').type('Ronaldo')
     cy.get('input[name="password"]').type('root1234')
     cy.get('input[name="comfirm_password"]').type('root1234')
     cy.get('input[name="birth_date"]').click()
-    cy.get('button').contains("10").click()
-    cy.get('button span.v-btn__content').contains("OK").click()
+    cy.get('button').contains('10').click()
+    cy.get('button span.v-btn__content').contains('OK').click()
     cy.get('.v-select').click()
-    cy.get('div.v-list-item-title').contains("Leer").click()
-    cy.get('input[name="email"]').type("cristianoronaldo@email.com")
+    cy.get('div.v-list-item-title').contains('Leer').click()
+    cy.get('input[name="email"]').type('cristianoronaldo@email.com')
     cy.get('.v-label').should('contain', 'Intereses')
     cy.get('button[type="submit"]').click()
 

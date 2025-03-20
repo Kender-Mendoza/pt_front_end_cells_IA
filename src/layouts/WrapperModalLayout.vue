@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
-    require: true
+    require: true,
   },
   title: {
     type: String,
-    require: true
-  }
+    require: true,
+  },
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
-}>();
+  (e: 'update:modelValue', value: boolean): void
+}>()
 
 const showModal = computed({
   get: () => props.modelValue,
-  set: (value: boolean) => emits('update:modelValue', value)
+  set: (value: boolean) => emits('update:modelValue', value),
 })
 
 const closeModal = () => {
-  emits('update:modelValue', false);
+  emits('update:modelValue', false)
 }
 </script>
 
@@ -35,11 +35,7 @@ const closeModal = () => {
             {{ title }}
           </div>
 
-          <v-btn
-            icon="$close"
-            variant="text"
-            @click="closeModal"
-          ></v-btn>
+          <v-btn icon="$close" variant="text" @click="closeModal"></v-btn>
         </v-card-title>
 
         <div class="px-6">

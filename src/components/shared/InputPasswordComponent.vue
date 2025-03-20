@@ -5,22 +5,17 @@ defineProps({
   name: {
     type: String,
     require: true,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 </script>
 
 <template>
   <Field :name="name" v-slot="{ field, errorMessage }">
-    <v-text-field
-      type="password"
-      v-bind="field"
-      :label="label"
-      :error-messages="errorMessage"
-    />
+    <v-text-field type="password" v-bind="field" :label="label" :error-messages="errorMessage" />
   </Field>
 </template>

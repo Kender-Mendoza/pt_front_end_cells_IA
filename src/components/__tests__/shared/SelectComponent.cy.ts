@@ -1,4 +1,4 @@
-import SelectComponent from "@/components/shared/SelectComponent.vue"
+import SelectComponent from '@/components/shared/SelectComponent.vue'
 
 describe('SelectComponent', () => {
   const options = ['Option 1', 'Option 2', 'Option 3']
@@ -8,15 +8,15 @@ describe('SelectComponent', () => {
       props: {
         name: 'choices',
         label: 'Select options',
-        values: options
-      }
+        values: options,
+      },
     })
 
     cy.get('input[name="choices"]').should('exist')
     cy.get('.v-label').should('contain', 'Select options')
 
     cy.get('.v-select').click()
-    options.forEach(option => {
+    options.forEach((option) => {
       cy.get('.v-list-item-title').should('contain', option)
     })
   })
@@ -26,12 +26,12 @@ describe('SelectComponent', () => {
       props: {
         name: 'choices',
         label: 'Select options',
-        values: options
-      }
+        values: options,
+      },
     })
 
     cy.get('.v-select').click()
-    options.forEach(option => {
+    options.forEach((option) => {
       cy.get('.v-list-item-title').should('contain', option)
     })
   })
@@ -41,8 +41,8 @@ describe('SelectComponent', () => {
       props: {
         name: 'choices',
         label: 'Select options',
-        values: options
-      }
+        values: options,
+      },
     })
 
     cy.get('.v-select').click()

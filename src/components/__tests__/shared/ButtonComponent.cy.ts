@@ -11,8 +11,8 @@ describe('ButtonComponent', () => {
     cy.mount(ButtonComponent, {
       props: {
         content: 'Click Me',
-        onClick: cy.spy().as("clickSpy")
-      }
+        onClick: cy.spy().as('clickSpy'),
+      },
     })
 
     cy.get('button.v-btn').click()

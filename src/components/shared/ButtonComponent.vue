@@ -1,15 +1,14 @@
 <script setup lang="ts">
-
 defineProps({
   content: {
     type: String,
-    require: true
-  }
+    require: true,
+  },
 })
 
 const emit = defineEmits<{
   (event: 'onClickButton'): void
-}>();
+}>()
 
 const onClick = () => {
   emit('onClickButton')
@@ -17,5 +16,5 @@ const onClick = () => {
 </script>
 
 <template>
-  <v-btn color="primary" elevation="4" large @click="onClick" > {{ content }} </v-btn>
+  <v-btn color="primary" elevation="4" large @click="onClick"> {{ content }} </v-btn>
 </template>

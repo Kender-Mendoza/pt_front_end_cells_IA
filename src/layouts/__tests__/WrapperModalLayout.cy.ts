@@ -6,7 +6,7 @@ describe('WrapperModalLayout', () => {
       props: {
         modelValue: true,
         title: 'Confirmation',
-      }
+      },
     })
 
     cy.get('.v-dialog').should('exist')
@@ -21,7 +21,7 @@ describe('WrapperModalLayout', () => {
       },
       slots: {
         default: 'Hello there!',
-      }
+      },
     })
 
     cy.get('div.px-6').contains('Hello there!')
@@ -32,8 +32,8 @@ describe('WrapperModalLayout', () => {
       props: {
         modelValue: true,
         title: 'Confirmation',
-        'onUpdate:modelValue': cy.spy().as('updateModelValue')
-      }
+        'onUpdate:modelValue': cy.spy().as('updateModelValue'),
+      },
     })
 
     cy.get('button').click()

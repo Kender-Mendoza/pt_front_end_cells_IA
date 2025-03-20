@@ -5,8 +5,8 @@ describe('InputPasswordComponent', () => {
     cy.mount(InputPasswordComponent, {
       props: {
         name: 'password',
-        label: 'Enter your password'
-      }
+        label: 'Enter your password',
+      },
     })
 
     cy.get('input[name="password"]').should('exist')
