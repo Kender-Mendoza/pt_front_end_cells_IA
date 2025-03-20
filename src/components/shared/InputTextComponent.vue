@@ -4,7 +4,7 @@ import { Field } from 'vee-validate'
 defineProps({
   name: {
     type: String,
-    require: true,
+    required: true,
     default: '',
   },
   label: {

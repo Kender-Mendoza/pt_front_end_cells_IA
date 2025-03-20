@@ -4,7 +4,7 @@ import { Field } from 'vee-validate'
 defineProps({
   name: {
     type: String,
-    require: true,
+    required: true,
     default: '',
   },
   label: {
@@ -23,13 +23,7 @@ const onClick = (value: boolean) => {
 
 <template>
   <Field :name="name" v-slot="{ value, handleChange }">
-    <v-switch
-      :model-value="value"
-      @update:model-value="handleChange"
-      :label="label"
-      color="primary"
-      inset
-      @click="onClick(value)"
-    />
+    <v-switch :model-value="value" @update:model-value="handleChange" :label="label" color="primary" inset
+      @click="onClick(value)" />
   </Field>
 </template>
