@@ -16,9 +16,10 @@ defineProps({
 </script>
 
 <template>
-  <Field :name="name" v-slot="{ field, errorMessage }">
+  <Field :name="name" v-slot="{ value, handleChange, errorMessage }">
     <v-date-input
-      v-bind="field"
+      :model-value="value"
+      @update:model-value="handleChange"
       :label="label"
       :error-messages="errorMessage"
       prepend-icon=""
