@@ -24,7 +24,7 @@ export const recordSchema = (t: TFunction) => {
       .of(yup.string().oneOf(["Leer", "Escribir", "Programar"]))
       .min(1, t("validations.record_schema.minSelect", { min: 1 })),
 
-    recibe_info: yup.boolean(),
+    recibe_info: yup.boolean().default(true),
 
     email: yup.string()
       .email(t("validations.record_schema.email"))

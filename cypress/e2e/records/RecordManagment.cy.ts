@@ -32,7 +32,7 @@ describe('Record Managment', () => {
       cy.get('input[name="intereses"]').should('exist')
       cy.get('.v-label').should('contain', 'Intereses')
 
-      cy.get('input[name="recibe_info"][type="checkbox"]').as('checkboxInput')
+      cy.get('input[aria-label="Desea recibir información"]').as('checkboxInput')
       cy.get('@checkboxInput').should('exist')
       cy.get('@checkboxInput').should('be.checked')
 
@@ -112,6 +112,23 @@ describe('Record Managment', () => {
     })
   })
 
+  context("When switch is false", () => {
+    it("Should no see email input", () => {
+      cy.get('button').contains('Crear Registro').click()
+
+      cy.get('input[aria-label="Desea recibir información"]').as('checkboxInput')
+      cy.get('@checkboxInput').should('exist')
+      cy.get('@checkboxInput').should('be.checked')
+
+      cy.get('input[name="email"]').should('exist')
+      cy.get('.v-label').should('contain', 'E-mail')
+
+      cy.get('@checkboxInput').click()
+
+      cy.get('input[name="email"]').should('not.be.visible')
+    })
+  })
+
   context("When email field is invalid", () => {
     beforeEach(() => {
       cy.get('button').contains('Crear Registro').click()
@@ -154,4 +171,5 @@ describe('Record Managment', () => {
       cy.get('.v-snackbar__wrapper').contains('Registro creado correctamente')
     });
   });
+
 });

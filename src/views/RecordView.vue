@@ -8,7 +8,7 @@ import NotificationComponent from '@/components/shared/NotificationComponent.vue
 import WrapperModalLayout from '@/layouts/WrapperModalLayout.vue';
 
 const { t } = useI18n();
-const showModal = ref<boolean>(true)
+const showModal = ref<boolean>(false)
 const notification = ref<boolean>(false)
 
 const toggleModal = (openModal: boolean, showNotification: boolean) => {
