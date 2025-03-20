@@ -4,6 +4,8 @@ Este proyecto es el resultado de una prueba técnica de frontend, cuyo objetivo 
 
 El formulario permite la entrada de datos con validaciones y controles interactivos, incluyendo un interruptor que habilita o deshabilita el campo de correo electrónico.
 
+[Puedes probar la aplicación aquí.](https://pt-front-end-cells-ia-git-main-kender-mendozas-projects.vercel.app)
+
 ## Tecnologías utilizadas
 
 El desarrollo de esta prueba se ha realizado con las siguientes tecnologías:
