@@ -135,7 +135,6 @@ const onClickSwitch = (value: boolean) => {
           :text="t('components.records.new_record_component.create')"
         ></v-btn>
       </div>
-
     </v-container>
   </form>
 </template>
