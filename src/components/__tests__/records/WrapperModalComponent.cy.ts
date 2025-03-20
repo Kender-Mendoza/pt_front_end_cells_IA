@@ -1,4 +1,4 @@
-import WrapperModalComponent from "@/components/records/WrapperModalComponent.vue"
+import WrapperModalComponent from '@/components/records/WrapperModalComponent.vue'
 
 //? Skipping due to a configuration bug with I18n.
 describe.skip('WrapperModalComponent', () => {

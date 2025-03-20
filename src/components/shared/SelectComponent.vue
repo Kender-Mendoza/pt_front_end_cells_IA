@@ -20,6 +20,13 @@ defineProps({
 
 <template>
   <Field :name="name" v-slot="{ field, errorMessage }">
-    <v-select v-bind="field" :error-messages="errorMessage" :items="values" :label="label" chips multiple></v-select>
+    <v-select
+      v-bind="field"
+      :error-messages="errorMessage"
+      :items="values"
+      :label="label"
+      chips
+      multiple
+    ></v-select>
   </Field>
 </template>
