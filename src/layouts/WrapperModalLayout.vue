@@ -2,7 +2,10 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  modelValue: Boolean,
+  modelValue: {
+    type: Boolean,
+    require: true
+  },
   title: {
     type: String,
     require: true
@@ -10,16 +13,16 @@ const props = defineProps({
 })
 
 const emits = defineEmits<{
-  (event: "update:modelValue", value: boolean): void;
+  (e: 'update:modelValue', value: boolean): void;
 }>();
 
 const showModal = computed({
   get: () => props.modelValue,
-  set: (value) => emits('update:modelValue', value)
+  set: (value: boolean) => emits('update:modelValue', value)
 })
 
 const closeModal = () => {
-  emits("update:modelValue", false)
+  emits('update:modelValue', false);
 }
 </script>
 
@@ -40,7 +43,7 @@ const closeModal = () => {
         </v-card-title>
 
         <div class="px-6">
-          <slot></slot>
+          <slot />
         </div>
       </v-card>
     </template>

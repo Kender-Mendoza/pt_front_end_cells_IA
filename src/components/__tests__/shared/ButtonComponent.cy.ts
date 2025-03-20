@@ -7,18 +7,15 @@ describe('ButtonComponent', () => {
     cy.get('button.v-btn').should('contain', 'Click Me')
   })
 
-  // it('emits onClickButton event when clicked', () => {
-  //   cy.mount(ButtonComponent, {
-  //     props: {
-  //       content: 'Click Me'
-  //     }
-  //   })
+  it('emits onClickButton event when clicked', () => {
+    cy.mount(ButtonComponent, {
+      props: {
+        content: 'Click Me',
+        onClick: cy.spy().as("clickSpy")
+      }
+    })
 
-  //   cy.get('[data-test="custom-button"]')
-  //     .click()
-  //     .then(() => {
-  //       // Verificar que el evento fue emitido
-  //       Cypress.vueWrapper.emitted('onClickButton').should('have.length', 1)
-  //     })
-  // })
+    cy.get('button.v-btn').click()
+    cy.get('@clickSpy').should('have.been.called')
+  })
 })
