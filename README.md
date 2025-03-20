@@ -33,10 +33,19 @@ Pruebas de unidad con Cypress:
 ```sh
 npm run test:unit
 ```
+Si el anterior no funciona, puedes utilizar la interfaz gráfica:
+```sh
+npm run test:unit:dev
+```
 
 Pruebas de unidad con Cypress:
 ```sh
 npm run test:e2e
+```
+
+Si el anterior no funciona, puedes utilizar la interfaz gráfica:
+```sh
+npm run test:e2e:dev
 ```
 
 ## Estructura del proyecto

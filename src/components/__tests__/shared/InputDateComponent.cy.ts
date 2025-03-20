@@ -9,7 +9,7 @@ describe('InputDateComponent', () => {
       }
     })
 
-    cy.get('input[name="date"]').should('exist')
+    cy.get('input[placeholder="mm/dd/yyyy"]').should('exist')
     cy.get('.v-label').should('contain', 'Select a date')
   })
 })
