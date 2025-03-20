@@ -1,8 +1,7 @@
 import * as yup from 'yup'
+import type { TFunction } from '@/types/TfunctionType.ts'
 
-// type i18n = (locale: string, value?: { }) => string
-
-export const recordSchema = (t) => {
+export const recordSchema = (t: TFunction) => {
   return yup.object({
     name: yup.string()
       .required(t("validations.record_schema.required")),
@@ -29,7 +28,7 @@ export const recordSchema = (t) => {
 
     email: yup.string()
       .email(t("validations.record_schema.email"))
-      .when("receiveInfo", {
+      .when("recibe_info", {
         is: true,
         then: (schema) => schema.required(t("validations.record_schema.required")),
         otherwise: (schema) => schema.notRequired(),

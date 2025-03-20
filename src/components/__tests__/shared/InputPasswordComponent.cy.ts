@@ -9,7 +9,7 @@ describe('InputPasswordComponent', () => {
       }
     })
 
-    cy.get('input[type="password"]').should('exist')
+    cy.get('input[name="password"]').should('exist')
     cy.get('.v-label').should('contain', 'Enter your password')
   })
 })

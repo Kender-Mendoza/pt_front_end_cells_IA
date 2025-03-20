@@ -6,10 +6,6 @@ const props = defineProps({
   title: {
     type: String,
     require: true
-  },
-  buttonText: {
-    type: String,
-    require: true
   }
 })
 

@@ -1,41 +1,39 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from "vue-i18n";
+
 import NewRecordComponent from '@/components/records/NewRecordComponent.vue';
 import ButtonComponent from '@/components/shared/ButtonComponent.vue'
 import NotificationComponent from '@/components/shared/NotificationComponent.vue';
 import WrapperModalLayout from '@/layouts/WrapperModalLayout.vue';
-import { ref } from 'vue';
 
+const { t } = useI18n();
 const showModal = ref<boolean>(false)
-const childForm = ref(null)
+const notification = ref<boolean>(false)
 
-const tonggleModal = () => {
-  showModal.value = showModal.value ? false : true
-}
-
-const submitForm = () => {
-  // console.log('funciona el evento')
-  // childForm.value?.$refs.recordForm.submit();
-  // childForm.value?.$refs.recordForm.submit()
-  // childForm.value?.onSubmit
+const toggleModal = (openModal: boolean, showNotification: boolean) => {
+  showModal.value = openModal
+  notification.value = showNotification
 }
 </script>
 
 <template>
-  <NotificationComponent content="Hola como estas?" />
+  <NotificationComponent
+    v-if="notification"
+    :content="t('views.record_view.record_created')"/>
 
   <div class="pa-4 text-center">
     <ButtonComponent
-      content="Crear Registro"
-      @on-click-button="tonggleModal"
+      :content="t('views.record_view.create_record')"
+      @on-click-button="toggleModal(true, false)"
     />
-
     <WrapperModalLayout
-      title="Nuevo Registro"
-      button-text="Crear"
+      :title="t('views.record_view.new_record')"
       v-model="showModal"
-      @button-event="submitForm"
     >
-      <NewRecordComponent ref="childForm"/>
+      <NewRecordComponent
+        @close-modal="toggleModal"
+      />
     </WrapperModalLayout>
   </div>
 

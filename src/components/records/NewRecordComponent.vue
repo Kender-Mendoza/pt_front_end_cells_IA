@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 import { useI18n } from "vue-i18n";
+import { ref } from 'vue';
 
 import { recordSchema } from '@/validations/RecordSchema';
 
@@ -10,7 +11,6 @@ import InputDateComponent from '@/components/shared/InputDateComponent.vue';
 import SelectComponent from '@/components/shared/SelectComponent.vue';
 import InputEmailComponent from '@/components/shared/InputEmailComponent.vue';
 import SwitchComponent from '@/components/shared/SwitchComponent.vue';
-import { ref } from 'vue';
 
 const { t } = useI18n();
 
@@ -19,18 +19,18 @@ const { handleSubmit } = useForm({
 });
 
 const emits = defineEmits<{
-  (event: "closeModal", value: boolean): void;
+  (event: "closeModal", openModal: boolean, showNotification: boolean ): void;
 }>();
 
-const showEmailInput = ref(false)
+const showEmailInput = ref<boolean>(false)
 
 const submitForm = handleSubmit((values) => {
   console.log('Datos validos', values)
-  emits("closeModal", false)
+  emits("closeModal", false, true)
 })
 
 const onCancelCreation = () => {
-  emits("closeModal", false)
+  emits("closeModal", false, false)
 }
 
 const onClickSwitch = (value: boolean) => {
@@ -46,14 +46,14 @@ const onClickSwitch = (value: boolean) => {
         <v-col cols="12" md="6">
           <InputTextComponent
             name="name"
-            label="Nombre *"
+            :label="t('components.records.new_record_component.name')"
           />
         </v-col>
 
         <v-col cols="12" md="6">
           <InputTextComponent
             name="last_name"
-            label="Segundo Nombre *"
+            :label="t('components.records.new_record_component.last_name')"
           />
         </v-col>
       </v-row>
@@ -62,14 +62,14 @@ const onClickSwitch = (value: boolean) => {
         <v-col cols="12" md="6">
           <InputPasswordComponent
             name="password"
-            label="Contraseña *"
+            :label="t('components.records.new_record_component.password')"
           />
         </v-col>
 
         <v-col cols="12" md="6">
           <InputPasswordComponent
             name="comfirm_password"
-            label="Confirmar Contraseña *"
+            :label="t('components.records.new_record_component.confirm_password')"
           />
         </v-col>
       </v-row>
@@ -78,14 +78,14 @@ const onClickSwitch = (value: boolean) => {
         <v-col cols="12" md="6">
           <InputDateComponent
             name="birth_date"
-            label="Fecha de Cumpleaños *"
+            :label="t('components.records.new_record_component.birth_date')"
           />
         </v-col>
 
         <v-col cols="12" md="6">
           <SelectComponent
             name="intereses"
-            label="Intereses"
+            :label="t('components.records.new_record_component.interests')"
             :values="['Leer', 'Escribir', 'Programar']"
           />
         </v-col>
@@ -96,30 +96,32 @@ const onClickSwitch = (value: boolean) => {
       <v-row>
         <v-col cols="12" md="12">
           <SwitchComponent
-            label="Desea recibir información"
             name="recibe_info"
+            :label="t('components.records.new_record_component.recibe_info')"
             @checked="onClickSwitch"
           />
         </v-col>
       </v-row>
 
-      <v-row v-show="showEmailInput">
+      <v-row>
         <v-col cols="12" md="12">
           <InputEmailComponent
             name="email"
-            label="E-mail"
+            :label="t('components.records.new_record_component.email')"
           />
         </v-col>
       </v-row>
 
-      <p class="text-medium-emphasis ps-2 text-caption"> * Indica los campos requridos. </p>
+      <p class="text-medium-emphasis ps-2 text-caption">
+        {{ t('components.records.new_record_component.required_fields') }}
+      </p>
 
       <v-divider class="mt-2"></v-divider>
 
       <div class="my-2 d-flex justify-end">
         <v-btn
           class="text-button"
-          text="Cancelar"
+          :text="t('components.records.new_record_component.cancel') "
           variant="text"
           @click="onCancelCreation"
         ></v-btn>
@@ -129,7 +131,7 @@ const onClickSwitch = (value: boolean) => {
           class="text-button ml-3"
           variant="tonal"
           color="primary"
-          text="Crear"
+          :text="t('components.records.new_record_component.create')"
         ></v-btn>
       </div>
 
