@@ -4,6 +4,7 @@ describe('NotificationComponent', () => {
   it('renders the snackbar with the correct content', () => {
     cy.mount(NotificationComponent, {
       props: {
+        modelValue: true,
         content: 'Operation successful',
       },
     })
