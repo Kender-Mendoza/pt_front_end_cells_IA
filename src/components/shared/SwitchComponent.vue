@@ -12,16 +12,24 @@ defineProps({
     default: ''
   }
 })
+const emit = defineEmits<{
+  (e: "checked", value: boolean): void
+}>()
 
+const onClick = (value: boolean) => {
+  emit("checked", !value)
+}
 </script>
 
 <template>
-  <Field :name="name" v-slot="{ field }">
+  <Field :name="name" v-slot="{ value, handleChange }">
     <v-switch
-      v-bind="field"
+      :model-value="value"
+      @update:model-value="handleChange"
       :label="label"
       color="primary"
       inset
+      @click="onClick(value)"
     />
   </Field>
 </template>

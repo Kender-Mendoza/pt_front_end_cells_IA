@@ -16,13 +16,14 @@ const { t } = useI18n();
 
 const { handleSubmit } = useForm({
   validationSchema: recordSchema(t),
+  initialValues: { recibe_info: true }
 });
 
 const emits = defineEmits<{
   (event: "closeModal", openModal: boolean, showNotification: boolean ): void;
 }>();
 
-const showEmailInput = ref<boolean>(false)
+const showEmailInput = ref<boolean>(true)
 
 const submitForm = handleSubmit((values) => {
   console.log('Datos validos', values)
@@ -94,7 +95,7 @@ const onClickSwitch = (value: boolean) => {
       <v-divider class="my-2"></v-divider>
 
       <v-row>
-        <v-col cols="12" md="12">
+        <v-col cols="12" md="6">
           <SwitchComponent
             name="recibe_info"
             :label="t('components.records.new_record_component.recibe_info')"
@@ -103,7 +104,7 @@ const onClickSwitch = (value: boolean) => {
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row v-show="showEmailInput">
         <v-col cols="12" md="12">
           <InputEmailComponent
             name="email"
